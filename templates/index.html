@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Churn Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="form-title">Customer Churn Prediction</h1>
+
+    <form method="POST" action="{{ url_for('index') }}" class="data-form">
+      {{ form.hidden_tag() }}
+
+      <div class="form-group">
+        {{ form.credit_score.label(class="form-label") }}
+        {{ form.credit_score(class="form-input") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.geography.label(class="form-label") }}
+        {{ form.geography(class="form-select") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.gender.label(class="form-label") }}
+        {{ form.gender(class="form-select") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.age.label(class="form-label") }}
+        {{ form.age(class="form-input") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.tenure.label(class="form-label") }}
+        {{ form.tenure(class="form-input") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.balance.label(class="form-label") }}
+        {{ form.balance(class="form-input") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.num_of_products.label(class="form-label") }}
+        {{ form.num_of_products(class="form-input") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.estimated_salary.label(class="form-label") }}
+        {{ form.estimated_salary(class="form-input") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.has_cr_card.label(class="form-label") }}
+        <div class="radio-group">
+          {{ form.has_cr_card }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        {{ form.is_active_member.label(class="form-label") }}
+        <div class="radio-group">
+          {{ form.is_active_member }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        {{ form.predict(class="predict-button") }}
+      </div>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="message">{{message}}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
